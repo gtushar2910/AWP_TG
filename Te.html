@@ -1,16 +1,49 @@
 <html>
 
 <head>
-    <script> // run this function when the document is loaded 
-        window.onload = function () { // create a couple of elements in an otherwise empty HTML page 
-            const heading = document.createElement("h1");
-            const heading_text = document.createTextNode("Big Head!");
-            heading.appendChild(heading_text);
-            document.body.appendChild(heading);
+    <title>DOM Tests</title>
+    <script>
+        function job() {
+            return new Promise(function (resolve, reject) {
+                reject();
+            });
         }
+        let promise = job();
+        promise.then(function () {
+            console.log('Success 1');
+        }).then(function () {
+            console.log('Success 2');
+        }).then(function () {
+            console.log('Success 3');
+        }).catch(function () {
+            console.log('Error 1');
+        })
     </script>
 </head>
 
-<body> </body>
+<body>
+    <div style="margin: .5in; height: 400px;">
+        <p><b><tt>text</tt></b></p>
+        <form>
+            <select onChange="setBodyAttr('text', this.options[this.selectedIndex].value);">
+                <option value="black">black</option>
+                <option value="red">red</option>
+            </select>
+            <p><b><tt>bgColor</tt></b></p>
+            <select onChange="setBodyAttr('bgColor', this.options[this.selectedIndex].value);">
+                <option value="white">white</option>
+                <option value="lightgrey">gray</option>
+            </select>
+            <p><b><tt>link</tt></b></p>
+            <select onChange="setBodyAttr('link', this.options[this.selectedIndex].value);">
+                <option value="blue">blue</option>
+                <option value="green">green</option>
+            </select>
+            <small> <a href="http://some.website.tld/page.html" id="sample"> (sample link) </a> </small>
+            <br />
+            <input type="button" value="version" onclick="ver()" />
+        </form>
+    </div>
+</body>
 
 </html>
